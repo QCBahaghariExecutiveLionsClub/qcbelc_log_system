@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>OrgLog — Community Logbook</title>
+<title>Qcbelc — Community Logbook</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -848,7 +848,7 @@ function printLog(id){
     <div class="meta">📅 ${fmtD(l.date)} | ${esc(l.category)} | 👤 ${esc(l.createdBy||'')}</div>
     <div class="body">${esc(l.description||'(No notes provided)')}</div>
     ${names.length?`<div class="att"><strong>📎 Attachments:</strong> ${names.map(esc).join(', ')}</div>`:''}
-    <div class="foot">Printed from OrgLog — ${new Date().toLocaleString()}</div>
+    <div class="foot">Printed from QCBELC Logging System — ${new Date().toLocaleString()}</div>
     </body></html>`);
     w.document.close();w.print();
     logAct(`🖨 Printed: "${l.title}"`);
