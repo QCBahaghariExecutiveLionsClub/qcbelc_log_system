@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Qcbelc — Community Logbook</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 :root {
   --cream:#faf7f2; --warm:#fff9f3; --navy:#1a2744; --navy2:#253461;
@@ -231,9 +231,38 @@ label .hint{font-weight:400;color:var(--muted);font-size:var(--fsm);margin-left:
 }
 @media print{.hdr,.tabs,.add-btn,.factions,.banner,.dactbar{display:none!important}.main{padding:0;max-width:none}}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+
+.input-container {
+    position: relative;
+    width: absolute;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.input-container .fa-eye {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.input-container .fa-eye-slash {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 </style>
 </head>
 <body>
+
 
 <!-- ══ LOGIN ══ -->
 <div id="ls" class="login-bg">
@@ -253,8 +282,11 @@ label .hint{font-weight:400;color:var(--muted);font-size:var(--fsm);margin-left:
     </div>
     <div class="lgrp">
       <label for="fP">🔑 Password</label>
-      <input type="password" id="fP" placeholder="Enter your password"
-             autocomplete="current-password">
+      <div class="input-container">
+        <input type="password" id="fP" placeholder="Enter your password" autocomplete="current-password">
+        <i class="fa fa-eye" id="togglePassword"></i>
+      </div>
+      
       <div class="lfderr" id="fPe"></div>
     </div>
 
@@ -907,6 +939,22 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(e)e.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();p.focus()}});
   if(p)p.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();doLogin()}});
 });
+
+const togglePassword = document.getElementById("togglePassword");
+
+togglePassword.addEventListener('click', function () {
+    var passwordInput = document.getElementById('fP');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        this.classList.remove('fa-eye');
+        this.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        this.classList.remove('fa-eye-slash');
+        this.classList.add('fa-eye');
+    }
+  });
 
 /* ─── INIT ─── */
 (function(){
